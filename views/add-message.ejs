@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+            <form id="post-form" method="post" action="/add-message">
+                <div class="form-info">
+                    <label>Message head
+        <input type="text" name="title" maxlength="25">
+      </label>
+                    <label>Author
+        <input type="text" name="author" maxlength="10">
+      </label>
+                </div>
+                <div class="form-text">
+                    <label>Message
+        <textarea name="text" maxlength="50"></textarea>
+      </label>
+                </div>
+                <div class="form-button">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+    </body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+            <article class="post">
+                <div class="info">
+                    <span><%= message.createdAt.toLocaleDateString() || 'No date' %></span>
+                    <span><%= message.author %></span>
+                </div>
+                <h1>
+                    <%= message.title %>
+                </h1>
+                <p>
+                    <%= message.text %>
+                </p>
+                <a href="/edit/<%= message.id %>" class="btn-edit btn-danger mt-3">
+
+                        Edit
+                    
+                    </a>
+
+
+                <button class="btn-delete btn-primary mt-3" data-id="<%= message.id %>">
+                        Delete
+                            </button>
+            </article>
+
+            <script>
+                document.addEventListener('click', (e) => {
+                    const id = e.target.dataset.id || null;
+                    if (id) {
+                        fetch(`/messages/${id}`, {
+                            method: 'DELETE',
+                        }).then(() => {
+                            window.location.href = '/messages';
+                        });
+                    }
+                });
+            </script>
+
+
+
+
+    </body>
+
+
+
+
+
+</html>
